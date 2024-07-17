@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Прогноз погоды</title>
+</head>
+<body>
+    <h1>Введите название города</h1>
+    <form action="{{ url_for('weather') }}" method="post">
+        <input type="text" name="city" required>
+        <button type="submit">Узнать</button>
+    </form>
+</body>
+</html>
