@@ -25,9 +25,13 @@ class OpenMeteoClient:
         coordinates = get_coordinates_by_city(city)
         if coordinates:
             self.params.update(coordinates)
-
-        response = requests.get(self.__url, params=self.params)
-        return response.json()
+        else:
+            return
+        try:
+            response = requests.get(self.__url, params=self.params)
+            return response.json()
+        except Exception as e:
+            return str(e)
 
 
 def get_weater_client(params=None) -> OpenMeteoClient:

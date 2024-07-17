@@ -11,17 +11,18 @@ def get_coordinates_by_city(city_name):
     headers = {
         "User-Agent": "Mozilla/5.0 (compatible; AcmeInc/1.0)",
     }
-    response = requests.get(
-        url,
-        params=params,
-        headers=headers,
-    )
+    try:
+        response = requests.get(
+            url,
+            params=params,
+            headers=headers,
+        )
 
-    data = response.json()
-
-    if not data:
-        raise requests.JSONDecodeError()
-    return {
-        "latitude": data[0]["lat"],
-        "longitude": data[0]["lon"],
-    }
+        data = response.json()
+        coordinates = {
+            "latitude": data[0]["lat"],
+            "longitude": data[0]["lon"],
+        }
+        return coordinates
+    except IndexError:
+        return None

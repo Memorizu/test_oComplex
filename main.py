@@ -19,6 +19,8 @@ def index():
 def weather():
     city = request.form["city"]
     city_weather = open_meteo_client.get_weather(city)
+    if not city_weather:
+        return render_template("404.html", city=city)
     return render_template("weather.html", city=city, weather=city_weather)
 
 
