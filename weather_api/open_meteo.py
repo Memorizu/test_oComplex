@@ -4,6 +4,7 @@ import requests_cache
 from retry_requests import retry
 
 from weather_api.utils import get_coordinates_by_city
+from config import settings
 
 
 class OpenMeteoClient:
@@ -21,6 +22,7 @@ class OpenMeteoClient:
                 "current_weather": "True",
             }
 
+    @settings.flask_cache.cash.memoize(300)
     def get_weather(self, city):
         coordinates = get_coordinates_by_city(city)
         if coordinates:

@@ -8,6 +8,7 @@ app = Flask(__name__)
 app.secret_key = settings.app.secret_key
 
 app.template_folder = settings.app.template_folder
+settings.flask_cache.cash.init_app(app=app, config=settings.flask_cache.cache_config)
 
 
 @app.route("/", methods=["GET"])

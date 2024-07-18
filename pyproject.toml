@@ -13,6 +13,9 @@ openmeteo-requests = "^1.2.0"
 requests-cache = "^1.2.1"
 retry-requests = "^2.0.0"
 pydantic-settings = "^2.3.4"
+pydantic = "^2.8.2"
+redis = "^5.0.7"
+flask-caching = "^2.3.0"
 
 
 [tool.poetry.group.dev.dependencies]
