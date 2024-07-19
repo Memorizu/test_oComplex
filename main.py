@@ -13,7 +13,8 @@ settings.flask_cache.cash.init_app(app=app, config=settings.flask_cache.cache_co
 
 @app.route("/", methods=["GET"])
 def index():
-    return render_template("index.html", last_city=session["last_city"])
+    last_city = session.get("last_city")
+    return render_template("index.html", last_city=last_city)
 
 
 @app.route("/weather", methods=["POST"])

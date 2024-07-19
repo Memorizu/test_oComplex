@@ -26,11 +26,15 @@ class FlaskCacheConfig(Config):
     cash: Cache = Cache()
     cache_config: dict = {
         "CACHE_TYPE": "RedisCache",
-        "CACHE_REDIS_HOST": redis.host,
+        "CACHE_REDIS_HOST": "redis",
         "CACHE_REDIS_PORT": redis.port,
         "CACHE_REDIS_DB": 0,
-        "CACHE_REDIS_URL": redis.url,
     }
+
+    def check_debug(self, debug: bool = False):
+        if debug:
+            self.cache_config["CACHE_REDIS_HOST"] = self.redis.host
+            self.cache_config["CACHE_REDIS_URL"] = self.redis.url
 
 
 class AppConfig(Config):
@@ -38,11 +42,15 @@ class AppConfig(Config):
     BASE_DIR: Path = Path()
     template_folder: Path = BASE_DIR / "static/templates/"
 
+    debug: bool = False
+
 
 class Settings(BaseSettings):
 
     app: AppConfig = AppConfig()
+
     flask_cache: FlaskCacheConfig = FlaskCacheConfig()
+    flask_cache.check_debug(app.debug)
 
 
 settings = Settings()

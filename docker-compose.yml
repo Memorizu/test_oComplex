@@ -8,3 +8,10 @@ services:
     volumes:
       - .:/app
 
+  redis:
+    image: redis:alpine
+    ports:
+      - "${port}:6379"
+    env_file:
+      - .env
+      
