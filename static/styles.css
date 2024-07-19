@@ -1,57 +1,177 @@
-/* static/css/styles.css */
-
-body {
+.body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    box-sizing: border-box;
+    background-color: #d5d4dd;
 }
 
-h1 {
-    color: #333;
+.title {
+    color: #3d3d41;
     text-align: center;
-    margin-top: 20px;
+    margin-top: auto;
+    padding: 20px;
+    font-size: 2em;
 }
 
-form {
+.nav {
     display: flex;
-    flex-direction: column;
+    background-color: #3d3d41;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    justify-content: flex-start;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column; 
     align-items: center;
+    padding: 20px;
     margin-top: 20px;
 }
 
+.title-page {
+    padding: 20px; 
+}
 
+.stats {
+    padding: 20px;
+    background-color: #f4f4f9;
+    margin: 20px auto;
+    border-radius: 8px;
+    max-width: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-input[type="text"] {
+.stats_ul {
+    list-style-type: none;
+    padding: 0;
+    font-size: 1.2em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.stats-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 10px;
-    margin-bottom: 10px;
-    width: 200px;
-    border: 1px solid #ccc;
+    background-color: #e0e0e0;
+    margin-bottom: 5px;
     border-radius: 4px;
 }
 
-button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #5cb85c;
+.stats-city {
+    flex: 1;
+    text-align: left;
+}
+
+.stats-count {
+    flex: 0;
+    text-align: right;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
     color: white;
-    border-radius: 4px;
+    text-decoration: none;
+}
+
+.weather-time,
+.weather-temp,
+.weather-wind {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #918fb3;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #7a7a99;
+}
+
+.footer {
+    background-color: #3d3d41;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 100;
+}
+
+.check-again {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    border: #918fb3;
+    border-color: red;
+}
+
+.button__check-again {
+    margin-left: 10px;
+}
+
+.button {
+    background-color: #918fb3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #4cae4c;
+.form {
+    position: relative;
+}
+
+.form input {
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    font-size: 16px; 
+}
+
+.form__button {
+    right: 0;
 }
 
 .autocomplete-suggestions {
     border: 1px solid #ddd;
     max-height: 150px;
-    overflow-y: auto;
+    max-width: fit-content;
     position: absolute;
+    top: 100%;
+    left: 0;
     background-color: white;
     z-index: 1000;
-    width: 220px;
-    margin-top: -10px;
+    width: calc(100% - 20px);
 }
 
 .autocomplete-suggestion {
@@ -61,16 +181,4 @@ button:hover {
 
 .autocomplete-suggestion:hover {
     background-color: #e0e0e0;
-}
-
-a {
-    text-align: center;
-    display: block;
-    margin-top: 20px;
-    color: #337ab7;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
 }

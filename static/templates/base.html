@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title class="title">{% block title %}Прогноз погоды{% endblock %}</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="body">
+    <header class="header">
+        <nav class="nav">
+            <ul class="nav__ul">
+                <li><a href="{{ url_for('index') }}">Главная</a></li>
+                <li><a href="{{ url_for('search_stats') }}">Статистика</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="footer">
+        <p>&copy; 2024 Прогноз погоды</p>
+    </footer>
+    <script src="/static/scripts.js"></script>
+</body>
+</html>

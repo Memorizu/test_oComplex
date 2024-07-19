@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Погода в  {{ city | title }}</title>
-    <link rel="stylesheet" href="/static/styles.css">
-</head>
-<body>
-    <h1>Погода в {{ city | title}}:</h1>
-    <p class="get-weather">Temperature: {{ weather['current_weather']['temperature'] }}°C</p>
-    <a href="{{ url_for('index') }}">Back</a>
-</body>
-<script></script>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Погода в {{ city | title }}{% endblock %}
+
+{% block content %}
+<section class="weather">
+    <h1 class="title-page">Погода в {{ city | title }}:</h1>
+    <h2 class="weather-time">Прогноз на: {{ weather['current_weather']['time'] }}</h2>
+    <p class="weather-temp">Температура: {{ weather['current_weather']['temperature'] }}°C</p>
+    <p class="weather-wind">Скорость ветра: {{ weather['current_weather']['windspeed'] }} км/ч</p>
+    <a class="button back-button" href="{{ url_for('index') }}">Назад</a>
+</section>
+{% endblock %}

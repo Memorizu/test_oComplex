@@ -1,44 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Прогноз погоды</title>
-    <!-- <style>
-        /* .autocomplete-suggestions {
-            border: 1px solid #ddd;
-            max-height: 150px;
-            overflow-y: auto;
-            position: absolute;
-            background-color: white;
-            z-index: 1000;
-        }
-        .autocomplete-suggestion {
-            padding: 8px;
-            cursor: pointer;
-        }
-        .autocomplete-suggestion:hover {
-            background-color: #e0e0e0;
-        } */
+{% extends 'base.html' %}
 
-    </style> -->
-    <link rel="stylesheet" href="/static/styles.css">
-</head>
-<body>
-    <h1>Введите название города</h1>
-    <form action="{{ url_for('weather') }}" method="post" id="weather-form">
-        <input type="text" id="city-input" name="city" required autocomplete="off">
-        <div id="autocomplete-suggestions" class="autocomplete-suggestions"></div>
-        <button type="submit">Узнать</button>
-    </form>
+{% block title %}Главная - Прогноз погоды{% endblock %}
 
-    {% if last_city %}
+
+{% block content %}
+<h1 class="title-page">Прогноз погоды</h1>
+<form id="weather-form" class="form" action="{{ url_for('weather') }}" method="post">
+    <input type="text" id="city-input" name="city" placeholder="Город">
+    <div id="autocomplete-suggestions" class="autocomplete-suggestions"></div>
+    <button class="button form__button" type="submit">Узнать</button>
+</form>
+
+{% if last_city %}
+    <div class="check-again">
         <p>Вы недавно искали погоду в городе <strong>{{ last_city }}</strong>. 
-        <button onclick="resubmitForm('{{ last_city }}')">Посмотреть снова</button></p>
-    {% endif %}
-
-    <a href="{{ url_for('search_stats') }}">Статистика</a>
-
-    <script src="/static/scripts.js"></script>
-</body>
-</html>
-
+        <button class="button button__check-again" type="button" onclick="resubmitForm('{{ last_city }}')">Посмотреть снова</button></p>
+    </div>
+{% endif %}
+{% endblock %}Ы

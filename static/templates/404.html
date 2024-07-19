@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Not Found</title>
-</head>
-<body>
-    <h1>{{ city }} not found</h1>
-    <a href="{{ url_for('index') }}">Back</a>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Город не найден{% endblock %}
+
+{% block content %}
+<h1>Город {{ city }} не найден.</h1>
+<a href="{{ url_for('index') }}">Назад</a>
+{% endblock %}

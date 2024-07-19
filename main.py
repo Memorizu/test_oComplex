@@ -2,6 +2,7 @@ from flask import Flask, jsonify, render_template, request, session
 
 from config import settings
 from weather_api.open_meteo import open_meteo_client
+from cities_db import cities
 
 
 app = Flask(__name__)
@@ -47,24 +48,6 @@ def search_stats():
             search_counts[city] = 1
 
     return render_template("stats.html", search_counts=search_counts)
-
-
-cities = [
-    "Москва",
-    "Санкт-Петербург",
-    "Новосибирск",
-    "Екатеринбург",
-    "Нижний Новгород",
-    "Казань",
-    "Челябинск",
-    "Омск",
-    "Самара",
-    "Ростов-на-Дону",
-    "Уфа",
-    "Красноярск",
-    "Воронеж",
-    "Пермь",
-]
 
 
 @app.route("/autocomplete", methods=["GET"])
