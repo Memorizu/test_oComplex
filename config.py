@@ -5,7 +5,10 @@ from flask_caching import Cache
 
 class Config(BaseSettings):
     model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=(
+            ".env_template",
+            ".env",
+        ),
         case_sensitive=False,
         extra="ignore",
     )
